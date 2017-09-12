@@ -33,10 +33,6 @@ var play = {
 
   	platforms.scale.set(0.7);
 
-  	//platforms.forEach(function(platform){
-  		//console.log(platform);
-  		//platform.body.allowGravity = false;
-  	//});
   	platforms.setAll('body.allowGravity', false);
   	platforms.setAll('body.immovable', true);
   	platforms.setAll('body.checkCollision.down', false);
@@ -60,9 +56,15 @@ var play = {
 	},
 
 	processInput: function(){
-		if(this.leftIsDown())       { this.processLeftMovement();  }
-  	else if(this.rightIsDown()) { this.processRightMovement(); }
-  	else                        { this.processWaiting();       };
+		if(this.leftIsDown()) { 
+			this.processLeftMovement();  
+		}
+  	else if(this.rightIsDown()) { 
+  		this.processRightMovement(); 
+  	}
+  	else { 
+  		this.processWaiting();
+  	};
 
   	this.processJump();
 	},
