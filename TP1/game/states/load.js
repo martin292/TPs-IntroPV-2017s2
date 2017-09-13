@@ -8,10 +8,7 @@ var load = {
 
 	create: function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		game.physics.arcade.gravity.y = 300;
-
-		game.stage.backgroundColor = '#00bfff';
-		
+		game.physics.arcade.gravity.y = 300;	
 
 		game.state.start('play');
 	},
