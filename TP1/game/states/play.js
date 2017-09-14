@@ -24,14 +24,11 @@ var play = {
 
 	createPlatforms: function(){
 		platforms = game.add.group();
-		platforms.enableBody = true;
 
 		var data = game.cache.getJSON('level_1');
 
   	data.forEach(function(p){
-      var platform = new Platform(game, p.x, p.y, 'platform', p.type);
-      //platform.create();
-      platforms.add(platform);    
+      platforms.add(new Platform(game, p.x, p.y, 'platform', p.type));    
   	});
 	},
 
@@ -43,7 +40,7 @@ var play = {
   	jumper.animations.add('left', [8, 9, 10, 11], 10, true);
   	jumper.animations.add('right', [4, 5, 6, 7], 10, true);
 
-  	game.physics.arcade.enable([jumper]);
+  	game.physics.arcade.enable(jumper);
 
   	jumper.body.collideWorldBounds = true;
   	jumper.body.allowGravity = true;
