@@ -30,15 +30,17 @@ var play = {
 
 		var data = game.cache.getJSON('level_1');
 
-  	data.forEach(function(platform){
-    	platforms.create(platform.x, platform.y, 'platform');
+  	data.forEach(function(p){
+      var platform = new Platform(game, p.x, p.y, 'platform', 0);
+      platform.create();
+      platforms.add(platform); 
+    	//platforms.create(p.x, p.y, 'platform');
   	});
 
-  	platforms.forEach(function(platform){
-    	platform.scale.setTo(0.6);
-    	platform.anchor.setTo(0.5);
-  	});
-
+    //platforms.setAll('scale.x', 0.6);
+    //platforms.setAll('scale.y', 0.6);
+    //platforms.setAll('anchor.x', 0.5);
+    //platforms.setAll('anchor.x', 0.5);
   	platforms.setAll('body.allowGravity', false);
   	platforms.setAll('body.immovable', true);
   	platforms.setAll('body.checkCollision.down', false);
