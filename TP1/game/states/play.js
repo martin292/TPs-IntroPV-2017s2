@@ -33,19 +33,7 @@ var play = {
 	},
 
 	createJumper: function(){
-		jumper = game.add.sprite(400, 460, 'jumper');
-  	jumper.frame = 0;
-  	jumper.scale.setTo(0.1);
-  	jumper.anchor.setTo(0.5);
-  	jumper.animations.add('left', [8, 9, 10, 11], 10, true);
-  	jumper.animations.add('right', [4, 5, 6, 7], 10, true);
-
-  	game.physics.arcade.enable(jumper);
-
-  	jumper.body.collideWorldBounds = true;
-  	jumper.body.allowGravity = true;
-  	jumper.body.gravity.y = 1000;
-  	jumper.body.maxVelocity.y = 500;
+    jumper = new Jumper(game, 400, 460, 'jumper');
 	},
 
   checkColitions: function(){

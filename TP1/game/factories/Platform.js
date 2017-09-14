@@ -6,6 +6,7 @@ Platform = function(game, x, y, sprite, type){
 		
 	this.scale.setTo(0.6);
 	this.anchor.setTo(0.5);
+	
 	this.body.allowGravity = false;
 	this.body.immovable = true;
 	this.body.checkCollision.down = false;
