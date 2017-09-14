@@ -5,7 +5,7 @@ var arrows;
 var jump;
 var platforms;
 var jumper;
-var jumpTimer = 0;
+
 
 game.state.add('boot', boot);
 game.state.add('load', load);

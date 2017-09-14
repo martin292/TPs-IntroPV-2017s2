@@ -60,13 +60,14 @@ var play = {
   		this.processRightMovement(); 
   	}
   	else { 
-      jumper.animations.stop();
+      this.stayStill();
   	};
 
   	this.processJump();
 	},
 
 	leftIsDown: function(){return	arrows.left.isDown;},
+
 	rightIsDown: function(){return arrows.right.isDown;},
 
 	processLeftMovement: function(){
@@ -79,10 +80,13 @@ var play = {
     jumper.position.x += 5;
 	},
 
+  stayStill: function(){
+    jumper.animations.stop();
+  },
+
 	processJump: function(){
-		if (jump.isDown && (jumper.body.onFloor() || jumper.body.touching.down) && game.time.now > jumpTimer){
+		if (jump.isDown && (jumper.body.onFloor() || jumper.body.touching.down)){
     	jumper.body.velocity.y = -600;
-    	jumpTimer = game.time.now + 750;
   	};
 	},
 
