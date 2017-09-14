@@ -5,7 +5,6 @@ var arrows;
 var jump;
 var platforms;
 var jumper;
-var direction = 'right';
 var jumpTimer = 0;
 
 game.state.add('boot', boot);

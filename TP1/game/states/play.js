@@ -8,12 +8,10 @@ var play = {
 		this.createJumper();
 	},
 
-	update: function() {
-		game.physics.arcade.collide(jumper, platforms);
+  update: function() {
+		this.checkColitions();
   	this.processInput();
-  	if(jumper.y >= 570){
-  		game.state.start('boot');
-  	};
+  	this.checkLose();
 	},
 
 	//-----------------------------------
@@ -32,7 +30,7 @@ var play = {
 
   	data.forEach(function(p){
       var platform = new Platform(game, p.x, p.y, 'platform', p.type);
-      platform.create();
+      //platform.create();
       platforms.add(platform);    
   	});
 	},
@@ -53,6 +51,10 @@ var play = {
   	jumper.body.maxVelocity.y = 500;
 	},
 
+  checkColitions: function(){
+    game.physics.arcade.collide(jumper, platforms);
+  },
+
 	processInput: function(){
 		if(this.leftIsDown()) { 
 			this.processLeftMovement();  
@@ -61,7 +63,7 @@ var play = {
   		this.processRightMovement(); 
   	}
   	else { 
-  		this.processWaiting();
+      jumper.animations.stop();
   	};
 
   	this.processJump();
@@ -73,13 +75,11 @@ var play = {
 	processLeftMovement: function(){
 		jumper.animations.play('left');
     jumper.position.x -= 5;
-    direction = 'left';
 	},
 
 	processRightMovement: function(){
 		jumper.animations.play('right');
     jumper.position.x += 5;
-    direction = 'right';
 	},
 
 	processJump: function(){
@@ -89,11 +89,10 @@ var play = {
   	};
 	},
 
-	processWaiting: function(){
-		if(direction != 'waiting'){
-      jumper.animations.stop();
-    }
-    direction = 'waiting';
-	}
+  checkLose: function(){
+    if(jumper.y >= 570){
+      game.state.start('boot');
+    };
+  }
 
 };
