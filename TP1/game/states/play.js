@@ -31,20 +31,10 @@ var play = {
 		var data = game.cache.getJSON('level_1');
 
   	data.forEach(function(p){
-      var platform = new Platform(game, p.x, p.y, 'platform', 0);
+      var platform = new Platform(game, p.x, p.y, 'platform', p.type);
       platform.create();
-      platforms.add(platform); 
-    	//platforms.create(p.x, p.y, 'platform');
+      platforms.add(platform);    
   	});
-
-    //platforms.setAll('scale.x', 0.6);
-    //platforms.setAll('scale.y', 0.6);
-    //platforms.setAll('anchor.x', 0.5);
-    //platforms.setAll('anchor.x', 0.5);
-  	platforms.setAll('body.allowGravity', false);
-  	platforms.setAll('body.immovable', true);
-  	platforms.setAll('body.checkCollision.down', false);
-  	platforms.setAll('body.velocity', new Phaser.Point(0, 90));
 	},
 
 	createJumper: function(){
