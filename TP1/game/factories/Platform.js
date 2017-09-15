@@ -26,16 +26,26 @@ Platform = function(game, x, y, sprite, type){
 	};
 
 	this.processTypeCollition = function(jumperBottom){
+		if(this.jumperIsOnThePlatform(jumperBottom)){
+			this.process();
+		}else{
+			this.hasCollide = false;
+		};		
+	};
+
+	this.process = function(){
 		switch(this.type){
-			case 1:
-				if(this.jumperIsOnThePlatform(jumperBottom)){
-					this.body.velocity = new Phaser.Point(0, 120);
-				}else{this.hasCollide = false;};
+			case 1: this.body.allowGravity = true; break;
+			case 2: game.state.start('boot');
 		};
 	};
 
 	this.jumperIsOnThePlatform = function(jumperBottom){
 		return jumperBottom == this.body.top;
+	};
+
+	this.accelerate = function(){
+		this.body.velocity.y += 10;
 	};
 
 };

@@ -6,6 +6,7 @@ var play = {
 		this.createKeys();
 		this.createPlatforms();
 		this.createJumper();
+    game.time.events.loop(10000, this.accelerate, this);
 	},
 
   update: function() {
@@ -86,6 +87,12 @@ var play = {
     if(jumper.y >= 570){
       game.state.start('boot');
     };
+  },
+
+  accelerate: function(){
+    platforms.forEach(function(platform){
+      platform.accelerate();
+    });
   }
 
 };
