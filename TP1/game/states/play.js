@@ -9,7 +9,7 @@ var play = {
 	},
 
   update: function() {
-		this.checkColitions();
+		this.checkCollitions();
   	this.processInput();
   	this.checkLose();
 	},
@@ -36,8 +36,12 @@ var play = {
     jumper = new Jumper(game, 400, 460, 'jumper');
 	},
 
-  checkColitions: function(){
-    game.physics.arcade.collide(jumper, platforms);
+  checkCollitions: function(){
+    game.physics.arcade.collide(jumper, platforms, this.processCollition, null, this);
+  },
+
+  processCollition: function(j, platform){
+    platform.processCollition(j.body.bottom);
   },
 
 	processInput: function(){
