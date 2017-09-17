@@ -45,7 +45,7 @@ Platform = function(game, x, y, sprite, type){
 	};
 
 	this.accelerate = function(){
-		this.body.velocity.y += 10;
+		this.body.velocity.y += 15;
 	};
 
 };

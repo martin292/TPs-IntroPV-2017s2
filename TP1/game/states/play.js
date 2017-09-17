@@ -3,11 +3,11 @@ var play = {
 	preload: function() {},
 
 	create: function() {
-		this.createKeys();
+  	this.createKeys();
 		this.createPlatforms();
 		this.createJumper();
     game.time.events.loop(10000, this.accelerate, this);
-	},
+  },
 
   update: function() {
 		this.checkCollitions();
