@@ -6,7 +6,7 @@ var play = {
   	this.createKeys();
 		this.createPlatforms();
 		this.createJumper();
-    game.time.events.loop(10000, this.accelerate, this);
+    this.createTimeEvent();
   },
 
   update: function() {
@@ -36,6 +36,10 @@ var play = {
 	createJumper: function(){
     jumper = new Jumper(game, 400, 460, 'jumper');
 	},
+
+  createTimeEvent: function(){
+    game.time.events.loop(10000, this.accelerate, this);
+  },
 
   checkCollitions: function(){
     game.physics.arcade.collide(jumper, platforms, this.processCollition, null, this);
