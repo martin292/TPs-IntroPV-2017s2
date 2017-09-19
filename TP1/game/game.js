@@ -11,5 +11,7 @@ var text;
 game.state.add('boot', boot);
 game.state.add('load', load);
 game.state.add('play', play);
+game.state.add('win', win);
+game.state.add('lose', lose);
 
 game.state.start('boot');

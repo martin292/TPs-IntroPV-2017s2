@@ -95,7 +95,7 @@ var play = {
 
   checkLose: function(){
     if(jumper.body.onFloor()){
-      game.state.start('boot');
+      game.state.start('lose');
     };
   },
 
