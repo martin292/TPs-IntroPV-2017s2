@@ -16,10 +16,6 @@ var play = {
   	this.checkLose();
 	},
 
-  render: function(){
-
-  },
-
 	//-----------------------------------
 
 

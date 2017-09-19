@@ -45,6 +45,9 @@ Platform = function(game, x, y, sprite, type){
 			case 2: 
 				j.score += 100; 
 				game.state.start('win');
+				break;
+			case 3:
+				j.score += 7;
 		};
 	};
 
