@@ -18,25 +18,33 @@ Platform = function(game, x, y, sprite, type){
 
 	this.type = type;
 
-	this.processCollition = function(jumperBottom){
+	this.processCollition = function(j){
 		if(!this.hasCollide){
 			this.hasCollide = true;
-			this.processTypeCollition(jumperBottom);
+			this.processTypeCollition(j);
 		};
 	};
 
-	this.processTypeCollition = function(jumperBottom){
-		if(this.jumperIsOnThePlatform(jumperBottom)){
-			this.process();
+	this.processTypeCollition = function(j){
+		if(this.jumperIsOnThePlatform(j.body.bottom)){
+			this.process(j);
 		}else{
 			this.hasCollide = false;
 		};		
 	};
 
-	this.process = function(){
+	this.process = function(j){
 		switch(this.type){
-			case 1: this.body.allowGravity = true; break;
-			case 2: game.state.start('boot');
+			case 0: 
+				j.score += 5; 
+				break;
+			case 1: 
+				this.body.allowGravity = true; 
+				j.score += 10; 
+				break;
+			case 2: 
+				j.score += 100; 
+				game.state.start('boot');
 		};
 	};
 

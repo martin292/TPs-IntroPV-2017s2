@@ -5,6 +5,7 @@ var arrows;
 var jump;
 var platforms;
 var jumper;
+var text;
 
 
 game.state.add('boot', boot);

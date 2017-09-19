@@ -19,6 +19,8 @@ Jumper = function(game, x, y, j){
   this.body.gravity.y = 1000;
   this.body.maxVelocity.y = 500;
 
+  this.score = 0;
+
 };
 
 Jumper.prototype = Object.create(Phaser.Sprite.prototype);

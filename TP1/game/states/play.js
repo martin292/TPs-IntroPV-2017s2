@@ -1,5 +1,5 @@
 var play = {
-	
+
 	preload: function() {},
 
 	create: function() {
@@ -7,6 +7,7 @@ var play = {
 		this.createPlatforms();
 		this.createJumper();
     this.createTimeEvent();
+    this.createScore();
   },
 
   update: function() {
@@ -14,6 +15,10 @@ var play = {
   	this.processInput();
   	this.checkLose();
 	},
+
+  render: function(){
+
+  },
 
 	//-----------------------------------
 
@@ -46,7 +51,8 @@ var play = {
   },
 
   processCollition: function(j, platform){
-    platform.processCollition(j.body.bottom);
+    platform.processCollition(j);
+    text.setText('Score: ' + jumper.score);
   },
 
 	processInput: function(){
@@ -97,6 +103,10 @@ var play = {
     platforms.forEach(function(platform){
       platform.accelerate();
     });
+  },
+
+  createScore: function(){
+    text = game.add.text(2, 1, "Puntos: " + jumper.score, { font: "32px Courier", fill: "#ffffff" });
   }
 
 };
