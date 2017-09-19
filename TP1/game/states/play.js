@@ -88,7 +88,7 @@ var play = {
 	},
 
   checkLose: function(){
-    if(jumper.y >= 570){
+    if(jumper.body.onFloor()){
       game.state.start('boot');
     };
   },
