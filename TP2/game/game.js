@@ -9,6 +9,7 @@ var map;
 var layer;
 var enemies;
 var blocks;
+var coins;
 
 
 game.state.add('boot', boot);

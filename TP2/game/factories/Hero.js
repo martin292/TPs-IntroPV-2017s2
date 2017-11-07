@@ -7,6 +7,8 @@ class Hero extends Phaser.Sprite{
 
 		game.add.existing(this);
 
+		this.points = 0;
+
 		this.scale.setTo(1);
 		this.anchor.setTo(0.5);
 
@@ -40,10 +42,12 @@ class Hero extends Phaser.Sprite{
 	processCollition(e){
 		if(this.body.touching.down && e.body.touching.up){
 			this.body.velocity.y = -250;
-			e.die();			
+			this.points += 100;
+			e.die();		
 		}else{
 			shake.shake(5);
 			this.bounceBack();
+			this.points -= 25;
 		}
 	}
 
@@ -69,6 +73,10 @@ class Hero extends Phaser.Sprite{
         emitter.y = eY;
 
         return emitter;
+    }
+
+    addpts(n){
+    	this.points += n;
     }
 
 }

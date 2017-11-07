@@ -9,6 +9,7 @@ var play = {
 
 		this.createBlocks();
 		this.createEnemies();
+		this.createCoins();
 
 		game.camera.follow(hero);
 	},
@@ -16,8 +17,10 @@ var play = {
 	update: function() {
 		game.physics.arcade.collide(hero, layer);
 		game.physics.arcade.collide(enemies, layer);
+		game.physics.arcade.collide(coins, layer);
 		game.physics.arcade.collide(enemies, blocks);
 		game.physics.arcade.collide(hero, enemies, this.processCollition);
+		game.physics.arcade.collide(hero, coins, this.coinCollition);
 
 		hero.processInput(cursors, spacebar);
 		enemies.forEach(function(e) { e.processMovement(); });
@@ -31,6 +34,11 @@ var play = {
 
 	processCollition: function(h, e){
 		h.processCollition(e);
+	},
+
+	coinCollition: function(h, c){
+		c.kill();
+		hero.addpts(50);
 	},
 
 	createMap: function(){
@@ -48,11 +56,13 @@ var play = {
 
 	lose: function(){
 		console.log('You LOSE!!!');
+		console.log('Points: ' + hero.points);
 		game.state.start('boot');
 	},
 
 	win: function(){
 		console.log('You WIN!!!');
+		console.log('Points: ' + hero.points);
 		game.state.start('boot');
 	},
 
@@ -73,6 +83,16 @@ var play = {
 
 		data.forEach(function(b) {
 			blocks.add(new Block(game, b.x, b.y, 'block'));
+		});
+	},
+
+	createCoins: function(){
+		coins = game.add.group();
+
+		var data = game.cache.getJSON('coins');
+
+		data.forEach(function(b) {
+			coins.add(new Coin(game, b.x, b.y, 'coin'));
 		});
 	}
 

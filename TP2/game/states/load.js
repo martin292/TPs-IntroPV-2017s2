@@ -9,9 +9,11 @@ var load = {
 		game.load.image('pixelWhite', 'resources/pixel.png');
 		game.load.image('pixelRed', 'resources/pixel_red.png');
 		game.load.image('block', 'resources/block.png');
+		game.load.spritesheet('coin', 'resources/coin.png', 192/6, 32);
 
 		game.load.json('blocks', 'game/levels/blocks.json');
 		game.load.json('level_0', 'game/levels/enemies0.json');
+		game.load.json('coins', 'game/levels/coins.json');
 	},
 
 	create: function() {
